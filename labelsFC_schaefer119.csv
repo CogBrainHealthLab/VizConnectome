@@ -1,0 +1,120 @@
+oldorder,regionlr,regionlabel,oldlabels,labels,neworder,label,region
+1,1,Visual,LH_Vis_1,Vis_1,119,1,7
+2,1,Visual,LH_Vis_2,Vis_2,118,2,7
+3,1,Visual,LH_Vis_3,Vis_3,117,3,7
+4,1,Visual,LH_Vis_4,Vis_4,116,4,7
+5,1,Visual,LH_Vis_5,Vis_5,115,5,7
+6,1,Visual,LH_Vis_6,Vis_6,114,6,7
+7,1,Visual,LH_Vis_7,Vis_7,113,7,7
+8,1,Visual,LH_Vis_8,Vis_8,112,8,7
+9,1,Visual,LH_Vis_9,Vis_9,111,9,7
+10,2,Somatomotor,LH_SomMot_1,SomMot_1,110,10,5
+11,2,Somatomotor,LH_SomMot_2,SomMot_2,109,11,5
+12,2,Somatomotor,LH_SomMot_3,SomMot_3,108,12,5
+13,2,Somatomotor,LH_SomMot_4,SomMot_4,107,13,5
+14,2,Somatomotor,LH_SomMot_5,SomMot_5,106,14,5
+15,2,Somatomotor,LH_SomMot_6,SomMot_6,105,15,5
+16,3,Dorsal Attention,LH_DorsAttn_Post_1,Post_1,104,16,2
+17,3,Dorsal Attention,LH_DorsAttn_Post_2,Post_2,103,17,2
+18,3,Dorsal Attention,LH_DorsAttn_Post_3,Post_3,102,18,2
+19,3,Dorsal Attention,LH_DorsAttn_Post_4,Post_4,101,19,2
+20,3,Dorsal Attention,LH_DorsAttn_Post_5,Post_5,100,20,2
+21,3,Dorsal Attention,LH_DorsAttn_Post_6,Post_6,99,21,2
+22,3,Dorsal Attention,LH_DorsAttn_PrCv_1,PrCv_1,98,22,2
+23,3,Dorsal Attention,LH_DorsAttn_FEF_1,FEF_1,97,23,2
+24,4,Ventral Attention,LH_SalVentAttn_ParOper_1,ParOper_1,96,24,6
+25,4,Ventral Attention,LH_SalVentAttn_FrOperIns_1,FrOperIns_1,95,25,6
+26,4,Ventral Attention,LH_SalVentAttn_FrOperIns_2,FrOperIns_2,94,26,6
+27,4,Ventral Attention,LH_SalVentAttn_PFCl_1,PFCl_1,93,27,6
+28,4,Ventral Attention,LH_SalVentAttn_Med_1,Med_1,92,28,6
+29,4,Ventral Attention,LH_SalVentAttn_Med_2,Med_2,91,29,6
+30,4,Ventral Attention,LH_SalVentAttn_Med_3,Med_3,90,30,6
+31,5,Limbic,LH_Limbic_OFC_1,OFC_1,89,31,4
+32,5,Limbic,LH_Limbic_TempPole_1,TempPole_1,88,32,4
+33,5,Limbic,LH_Limbic_TempPole_2,TempPole_2,87,33,4
+34,6,Frontoparietal,LH_Cont_Par_1,Par_1,86,34,3
+35,6,Frontoparietal,LH_Cont_PFCl_1,PFCl_1,85,35,3
+36,6,Frontoparietal,LH_Cont_pCun_1,pCun_1,84,36,3
+37,6,Frontoparietal,LH_Cont_Cing_1,Cing_1,83,37,3
+38,7,Default mode,LH_Default_Temp_1,Temp_1,82,38,1
+39,7,Default mode,LH_Default_Temp_2,Temp_2,81,39,1
+40,7,Default mode,LH_Default_Par_1,Par_1,80,40,1
+41,7,Default mode,LH_Default_Par_2,Par_2,79,41,1
+42,7,Default mode,LH_Default_PFC_1,PFC_1,78,42,1
+43,7,Default mode,LH_Default_PFC_2,PFC_2,77,43,1
+44,7,Default mode,LH_Default_PFC_3,PFC_3,76,44,1
+45,7,Default mode,LH_Default_PFC_4,PFC_4,75,45,1
+46,7,Default mode,LH_Default_PFC_5,PFC_5,74,46,1
+47,7,Default mode,LH_Default_PFC_6,PFC_6,73,47,1
+48,7,Default mode,LH_Default_PFC_7,PFC_7,72,48,1
+49,7,Default mode,LH_Default_pCunPCC_1,pCunPCC_1,71,49,1
+50,7,Default mode,LH_Default_pCunPCC_2,pCunPCC_2,70,50,1
+51,15,Visual,RH_Vis_1,Vis_1,1,51,7
+52,15,Visual,RH_Vis_2,Vis_2,2,52,7
+53,15,Visual,RH_Vis_3,Vis_3,3,53,7
+54,15,Visual,RH_Vis_4,Vis_4,4,54,7
+55,15,Visual,RH_Vis_5,Vis_5,5,55,7
+56,15,Visual,RH_Vis_6,Vis_6,6,56,7
+57,15,Visual,RH_Vis_7,Vis_7,7,57,7
+58,15,Visual,RH_Vis_8,Vis_8,8,58,7
+59,14,Somatomotor,RH_SomMot_1,SomMot_1,9,59,5
+60,14,Somatomotor,RH_SomMot_2,SomMot_2,10,60,5
+61,14,Somatomotor,RH_SomMot_3,SomMot_3,11,61,5
+62,14,Somatomotor,RH_SomMot_4,SomMot_4,12,62,5
+63,14,Somatomotor,RH_SomMot_5,SomMot_5,13,63,5
+64,14,Somatomotor,RH_SomMot_6,SomMot_6,14,64,5
+65,14,Somatomotor,RH_SomMot_7,SomMot_7,15,65,5
+66,14,Somatomotor,RH_SomMot_8,SomMot_8,16,66,5
+67,13,Dorsal Attention,RH_DorsAttn_Post_1,Post_1,17,67,2
+68,13,Dorsal Attention,RH_DorsAttn_Post_2,Post_2,18,68,2
+69,13,Dorsal Attention,RH_DorsAttn_Post_3,Post_3,19,69,2
+70,13,Dorsal Attention,RH_DorsAttn_Post_4,Post_4,20,70,2
+71,13,Dorsal Attention,RH_DorsAttn_Post_5,Post_5,21,71,2
+72,13,Dorsal Attention,RH_DorsAttn_PrCv_1,PrCv_1,22,72,2
+73,13,Dorsal Attention,RH_DorsAttn_FEF_1,FEF_1,23,73,2
+74,12,Ventral Attention,RH_SalVentAttn_TempOccPar_1,TempOccPar_1,24,74,6
+75,12,Ventral Attention,RH_SalVentAttn_TempOccPar_2,TempOccPar_2,25,75,6
+76,12,Ventral Attention,RH_SalVentAttn_FrOperIns_1,FrOperIns_1,26,76,6
+77,12,Ventral Attention,RH_SalVentAttn_Med_1,Med_1,27,77,6
+78,12,Ventral Attention,RH_SalVentAttn_Med_2,Med_2,28,78,6
+79,11,Limbic,RH_Limbic_OFC_1,OFC_1,29,79,4
+80,11,Limbic,RH_Limbic_TempPole_1,TempPole_1,30,80,4
+81,10,Frontoparietal,RH_Cont_Par_1,Par_1,31,81,3
+82,10,Frontoparietal,RH_Cont_Par_2,Par_2,32,82,3
+83,10,Frontoparietal,RH_Cont_PFCl_1,PFCl_1,33,83,3
+84,10,Frontoparietal,RH_Cont_PFCl_2,PFCl_2,34,84,3
+85,10,Frontoparietal,RH_Cont_PFCl_3,PFCl_3,35,85,3
+86,10,Frontoparietal,RH_Cont_PFCl_4,PFCl_4,36,86,3
+87,10,Frontoparietal,RH_Cont_Cing_1,Cing_1,37,87,3
+88,10,Frontoparietal,RH_Cont_PFCmp_1,PFCmp_1,38,88,3
+89,10,Frontoparietal,RH_Cont_pCun_1,pCun_1,39,89,3
+90,9,Default mode,RH_Default_Par_1,Par_1,40,90,1
+91,9,Default mode,RH_Default_Temp_1,Temp_1,41,91,1
+92,9,Default mode,RH_Default_Temp_2,Temp_2,42,92,1
+93,9,Default mode,RH_Default_Temp_3,Temp_3,43,93,1
+94,9,Default mode,RH_Default_PFCv_1,PFCv_1,44,94,1
+95,9,Default mode,RH_Default_PFCv_2,PFCv_2,45,95,1
+96,9,Default mode,RH_Default_PFCdPFCm_1,PFCdPFCm_1,46,96,1
+97,9,Default mode,RH_Default_PFCdPFCm_2,PFCdPFCm_2,47,97,1
+98,9,Default mode,RH_Default_PFCdPFCm_3,PFCdPFCm_3,48,98,1
+99,9,Default mode,RH_Default_pCunPCC_1,pCunPCC_1,49,99,1
+100,9,Default mode,RH_Default_pCunPCC_2,pCunPCC_2,50,100,1
+101,8,Subcortical,CEREBELLUM_LEFT,Cerebellum,61,101,8
+102,8,Subcortical,THALAMUS_LEFT,Thalamus,62,102,8
+103,8,Subcortical,CAUDATE_LEFT,Caudate,63,103,8
+104,8,Subcortical,PUTAMEN_LEFT,Putamen,64,104,8
+105,8,Subcortical,PALLIDUM_LEFT,Pallidum,65,105,8
+106,8,Subcortical,BRAIN_STEM,Brain_Stem,60,106,8
+107,8,Subcortical,HIPPOCAMPUS_LEFT,Hippocampus,66,107,8
+108,8,Subcortical,AMYGDALA_LEFT,Amygdala,67,108,8
+109,8,Subcortical,ACCUMBENS_LEFT,Accumbens,68,109,8
+110,8,Subcortical,DIENCEPHALON_VENTRAL_LEFT,Diencephalon_Ventral,69,110,8
+111,8,Subcortical,CEREBELLUM_RIGHT,Cerebellum,59,111,8
+112,8,Subcortical,THALAMUS_RIGHT,Thalamus,58,112,8
+113,8,Subcortical,CAUDATE_RIGHT,Caudate,57,113,8
+114,8,Subcortical,PUTAMEN_RIGHT,Putamen,56,114,8
+115,8,Subcortical,PALLIDUM_RIGHT,Pallidum,55,115,8
+116,8,Subcortical,HIPPOCAMPUS_RIGHT,Hippocampus,54,116,8
+117,8,Subcortical,AMYGDALA_RIGHT,Amygdala,53,117,8
+118,8,Subcortical,ACCUMBENS_RIGHT,Accumbens,52,118,8
+119,8,Subcortical,DIENCEPHALON_VENTRAL_RIGHT,Diencephalon_Ventral,51,119,8
