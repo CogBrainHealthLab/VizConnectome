@@ -6,7 +6,6 @@
 ########################################################################################################
 viz219=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
 {
-  
   require(ggplot2)
   require(ggraph)
   require(igraph)
@@ -16,7 +15,6 @@ viz219=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
   label$regionlabel <- factor(label$regionlabel, levels = c("Visual", "Somatomotor", "Dorsal Attention", 
                                                             "Ventral Attention","Limbic","Frontoparietal", 
                                                             "Default mode","Subcortical"))
-  
   ##reconstruct FC matrices
   FC_219x219half <- matrix(0, nrow = 219, ncol = 219)
   FC_219x219half[upper.tri(FC_219x219half, diag = FALSE)] <- data
@@ -75,7 +73,6 @@ viz219=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
 ########################################################################################################
 viz119=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
 {
-
   require(ggplot2)
   require(ggraph)
   require(igraph)
@@ -85,7 +82,6 @@ viz119=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
   label$regionlabel <- factor(label$regionlabel, levels = c("Visual", "Somatomotor", "Dorsal Attention", 
                                                             "Ventral Attention","Limbic","Frontoparietal", 
                                                             "Default mode","Subcortical"))
-  
   ##reconstruct FC matrices
   FC_119x119half <- matrix(0, nrow = 119, ncol = 119)
   FC_119x119half[upper.tri(FC_119x119half, diag = FALSE)] <- data
