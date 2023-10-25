@@ -237,7 +237,7 @@ vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,f
     }
     vizChord_12x12(data=data,hot=hot,cold=cold,width=width,height=height,filename=filename, colorscheme = colorscheme)  
   } else
-  {cat("The length of the input vector does not fit any of the recognized parcellation schemes. The input vector should contain 4005, 7021, 23871 or 30135 values")}
+  {cat("The length of the input vector does not fit any of the recognized parcellation schemes. The input vector should contain 78, 4005, 7021, 23871 or 30135 values")}
 }
 ########################################################################################################
 ########################################################################################################
