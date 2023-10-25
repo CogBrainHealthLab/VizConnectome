@@ -211,7 +211,6 @@ viz90=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
   dev.off()
   
 }
-
 ########################################################################################################
 ########################################################################################################
 viz246=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
@@ -285,12 +284,12 @@ viz246=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
                right=textGrob("Right hemisphere",gp = gpar(fontface=2,fontsize = 6),rot=90, hjust = 0.5,x = -3))
   dev.off()
 }
-
 ########################################################################################################
 ########################################################################################################
 
-vizConnectome=function(data, hot="#F8766D", cold="#00BFC4", width, height,edgethickness=0.8,filename="conn.png", colorscheme)
+vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", width, height,edgethickness=0.8,filename="conn.png", colorscheme)
 {
+  ## checked required packages
   list.of.packages <- c("ggplot2", "ggraph","igraph","gridExtra","grid")
   new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) 
@@ -298,71 +297,36 @@ vizConnectome=function(data, hot="#F8766D", cold="#00BFC4", width, height,edgeth
     cat(paste("The following package(s) are required and will be installed:\n",new.packages,"\n"))
     install.packages(new.packages)
   }  
-  
   if(length(data)==7021)
   {
-    if(missing("colorscheme"))
-    {
-      colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")
-    }
-    if(missing("width"))
-    {
-      width=1550
-    }
-    if(missing("height"))
-    {
-      height=1150
-    }
+    if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
+    if(missing("width")){width=1550}
+    if(missing("height")){height=1150}
+    
     viz119(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
   } else if (length(data)==23871) 
   {    
-    if(missing("colorscheme"))
-    {
-      colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")
-    }
-    if(missing("width"))
-    {
-      width=1550
-    }
-    if(missing("height"))
-    {
-      height=1150
-    }
+    if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
+    if(missing("width")){width=1550}
+    if(missing("height")){height=1150}
+    
     viz219(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
   } else if (length(data)==30135) 
   { 
-      if(missing("colorscheme"))
-      {
-        colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")
-      }
-      if(missing("width"))
-      {
-        width=1550
-      }
-      if(missing("height"))
-      {
-        height=1150
-      }
+      if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
+      if(missing("width")){width=1550}
+      if(missing("height")){height=1150}
+    
     viz246(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
   } else if (length(data)==4005) 
   {    
-    if(missing("colorscheme"))
-    {
-      colorscheme = c("#D53E4F","#FC8D59","#FEE08B","#FFFFBF","#E6F598","#99D594","#3288BD")
-    }
-    if(missing("width"))
-    {
-      width=1500
-    }
-    if(missing("height"))
-    {
-      height=1150
-    }
+    if(missing("colorscheme")){colorscheme = c("#D53E4F","#FC8D59","#FEE08B","#FFFFBF","#E6F598","#99D594","#3288BD")}
+    if(missing("width")){width=1500}
+    if(missing("height")){height=1150}
+    
     viz90(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
   } else
-  {
-    cat("The length of the input vector does not fit any of the recognized parcellation schemes. The input vector should contain 4005, 7021, 23871 or 30135 values")
-  }
+  {cat("The length of the input vector does not fit any of the recognized parcellation schemes. The input vector should contain 4005, 7021, 23871 or 30135 values")}
 }
 ########################################################################################################
 ########################################################################################################
