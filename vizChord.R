@@ -46,7 +46,7 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
   neg_color_val=neg_color_range(101)
   
   FC_matrix=array(rep(0,nnode^2),dim=c(nnode,nnode))
-  FC_matrix[lower.tri(FC_matrix, diag=FALSE)] = data
+  FC_matrix[upper.tri(FC_matrix, diag=FALSE)] = data
   FC_matrix=FC_matrix+t(FC_matrix)
   
   FCregionmat=array(dim=c(noregions,noregions))
