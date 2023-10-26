@@ -289,28 +289,28 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", width, height,edge
     if(missing("width")){width=1550}
     if(missing("height")){height=1150}
     
-    viz119(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
+    suppressWarnings(viz119(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme))
   } else if (length(data)==23871) 
   {    
     if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
     if(missing("width")){width=1550}
     if(missing("height")){height=1150}
     
-    viz219(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
+    suppressWarnings(viz219(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme))
   } else if (length(data)==30135) 
   { 
     if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
     if(missing("width")){width=1550}
     if(missing("height")){height=1150}
     
-    viz246(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
+    suppressWarnings(viz246(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme))
   } else if (length(data)==4005) 
   {    
     if(missing("colorscheme")){colorscheme = c("#D53E4F","#FC8D59","#FEE08B","#FFFFBF","#E6F598","#99D594","#3288BD")}
     if(missing("width")){width=1500}
     if(missing("height")){height=1150}
     
-    viz90(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
+    suppressWarnings(viz90(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme))
   } else
   {cat("The length of the input vector does not fit any of the recognized parcellation schemes. The input vector should contain 4005, 7021, 23871 or 30135 values")}
 }
