@@ -93,6 +93,11 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
   } else {
     datrmFC=datFC[-which(datFC$value==0),]}
 
+  if(length(unique(c(datrmFC$from,datrmFC$to)))< noregions)
+  {
+    stop(paste("Connections are absent in",noregions-length(unique(c(datrmFC$from,datrmFC$to))),"of the networks. Please use a connectogram instead",sep=" "))
+  }
+  
   for (datval in which(datrmFC$value>0)){
     colarrFC[datval]=pos_color_val[round(abs(datrmFC$value[datval])/max(abs(datrmFC$value))*100)+1]
   }
