@@ -11,40 +11,40 @@ viz219=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
   require(igraph)
   require(gridExtra)
   require(grid)
-  label <- read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE")
-  label$regionlabel <- factor(label$regionlabel, levels = c("Visual", "Somatomotor", "Dorsal Attention", 
+  label = read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE")
+  label$regionlabel = factor(label$regionlabel, levels = c("Visual", "Somatomotor", "Dorsal Attention", 
                                                             "Ventral Attention","Limbic","Frontoparietal", 
                                                             "Default mode","Subcortical"))
   ##reconstruct FC matrices
-  FC_219x219half <- matrix(0, nrow = 219, ncol = 219)
-  FC_219x219half[upper.tri(FC_219x219half, diag = FALSE)] <- data
-  FC_219X219<-FC_219x219half+t(FC_219x219half)
+  FC_219x219half = matrix(0, nrow = 219, ncol = 219)
+  FC_219x219half[upper.tri(FC_219x219half, diag = FALSE)] = data
+  FC_219X219=FC_219x219half+t(FC_219x219half)
   
   ##sorting and reordering labels according to their respective regions
-  nodeorder<-as.numeric(rep(NA,219))
+  nodeorder=as.numeric(rep(NA,219))
   for (rowno in 1:219){
-    nodeorder[rowno]<-which(label$neworder==rowno)
+    nodeorder[rowno]=which(label$neworder==rowno)
   }
   
-  colnames(FC_219X219)<-label$labels
-  rownames(FC_219X219)<-label$labels
-  reordered<-FC_219X219[nodeorder,nodeorder]
-  RegionsFC<-as.factor(label$regionlabel)[nodeorder]
+  colnames(FC_219X219)=label$labels
+  rownames(FC_219X219)=label$labels
+  reordered=FC_219X219[nodeorder,nodeorder]
+  RegionsFC=as.factor(label$regionlabel)[nodeorder]
   
   ##graph object
   
-  graphobjFC<-graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
-  EvalFC<-edge_attr(graphobjFC, "weight", index = E(graphobjFC))
-  posnegFC<-EvalFC
-  posnegFC<-replace(posnegFC, which(posnegFC < 0), "2_neg")
-  posnegFC<-replace(posnegFC, which(posnegFC!="2_neg"), "1_pos")
+  graphobjFC=graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
+  EvalFC=edge_attr(graphobjFC, "weight", index = E(graphobjFC))
+  posnegFC=EvalFC
+  posnegFC=replace(posnegFC, which(posnegFC < 0), "2_neg")
+  posnegFC=replace(posnegFC, which(posnegFC!="2_neg"), "1_pos")
   
-  edge_attr(graphobjFC, "weight", index = E(graphobjFC))<-abs(EvalFC)
-  edge_attr(graphobjFC, "posFC", index = E(graphobjFC))<-posnegFC
+  edge_attr(graphobjFC, "weight", index = E(graphobjFC))=abs(EvalFC)
+  edge_attr(graphobjFC, "posFC", index = E(graphobjFC))=posnegFC
   
   #plot
   
-  FCplot<-ggraph(graphobjFC, layout = 'linear', circular = TRUE) +  
+  FCplot=ggraph(graphobjFC, layout = 'linear', circular = TRUE) +  
     geom_edge_arc(aes(color=posnegFC, alpha=weight), edge_width=edgethickness, show.legend = T) +
     scale_edge_alpha_continuous(guide="none")+
     scale_edge_color_manual(name="Edges", labels=c("Positive","Negative"),values=c(hot,cold))+
@@ -78,40 +78,40 @@ viz119=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
   require(igraph)
   require(gridExtra)
   require(grid)
-  label <- read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE")
-  label$regionlabel <- factor(label$regionlabel, levels = c("Visual", "Somatomotor", "Dorsal Attention", 
+  label = read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE")
+  label$regionlabel = factor(label$regionlabel, levels = c("Visual", "Somatomotor", "Dorsal Attention", 
                                                             "Ventral Attention","Limbic","Frontoparietal", 
                                                             "Default mode","Subcortical"))
   ##reconstruct FC matrices
-  FC_119x119half <- matrix(0, nrow = 119, ncol = 119)
-  FC_119x119half[upper.tri(FC_119x119half, diag = FALSE)] <- data
-  FC_119X119<-FC_119x119half+t(FC_119x119half)
+  FC_119x119half = matrix(0, nrow = 119, ncol = 119)
+  FC_119x119half[upper.tri(FC_119x119half, diag = FALSE)] = data
+  FC_119X119=FC_119x119half+t(FC_119x119half)
   
   ##sorting and reordering labels according to their respective regions
-  nodeorder<-as.numeric(rep(NA,119))
+  nodeorder=as.numeric(rep(NA,119))
   for (rowno in 1:119){
-    nodeorder[rowno]<-which(label$neworder==rowno)
+    nodeorder[rowno]=which(label$neworder==rowno)
   }
   
-  colnames(FC_119X119)<-label$labels
-  rownames(FC_119X119)<-label$labels
-  reordered<-FC_119X119[nodeorder,nodeorder]
-  RegionsFC<-as.factor(label$regionlabel)[nodeorder]
+  colnames(FC_119X119)=label$labels
+  rownames(FC_119X119)=label$labels
+  reordered=FC_119X119[nodeorder,nodeorder]
+  RegionsFC=as.factor(label$regionlabel)[nodeorder]
   
   ##graph object
   
-  graphobjFC<-graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
-  EvalFC<-edge_attr(graphobjFC, "weight", index = E(graphobjFC))
-  posnegFC<-EvalFC
-  posnegFC<-replace(posnegFC, which(posnegFC < 0), "2_neg")
-  posnegFC<-replace(posnegFC, which(posnegFC!="2_neg"), "1_pos")
+  graphobjFC=graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
+  EvalFC=edge_attr(graphobjFC, "weight", index = E(graphobjFC))
+  posnegFC=EvalFC
+  posnegFC=replace(posnegFC, which(posnegFC < 0), "2_neg")
+  posnegFC=replace(posnegFC, which(posnegFC!="2_neg"), "1_pos")
   
-  edge_attr(graphobjFC, "weight", index = E(graphobjFC))<-abs(EvalFC)
-  edge_attr(graphobjFC, "posFC", index = E(graphobjFC))<-posnegFC
+  edge_attr(graphobjFC, "weight", index = E(graphobjFC))=abs(EvalFC)
+  edge_attr(graphobjFC, "posFC", index = E(graphobjFC))=posnegFC
   
   #plot
   
-  FCplot<-ggraph(graphobjFC, layout = 'linear', circular = TRUE) +  
+  FCplot=ggraph(graphobjFC, layout = 'linear', circular = TRUE) +  
     geom_edge_arc(aes(color=posnegFC, alpha=weight), edge_width=edgethickness, show.legend = T) +
     scale_edge_alpha_continuous(guide="none")+
     scale_edge_color_manual(name="Edges", labels=c("Positive","Negative"),values=c(hot,cold))+
@@ -145,46 +145,39 @@ viz90=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
   require(igraph)
   require(gridExtra)
   require(grid)
-  label <- read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE")
-  label$regionlabel <- factor(label$X,levels = c("frontal","central","temporal","parietal",
-                                       "limbic","subcortical","occipital"))
+  label = read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE")
+  label$regionlabel = factor(label$X,levels = c("Frontal","Central","Temporal","Parietal",
+                                                 "Limbic","Subcortical","Occipital"))
   
   ##reconstruct SC matrices
-  SC_90x90half <- matrix(0, nrow = 90, ncol = 90)
-  SC_90x90half[upper.tri(SC_90x90half, diag = FALSE)] <- data
-  SC_90X90<-SC_90x90half+t(SC_90x90half)
+  SC_90x90half = matrix(0, nrow = 90, ncol = 90)
+  SC_90x90half[upper.tri(SC_90x90half, diag = FALSE)] = data
+  SC_90X90=SC_90x90half+t(SC_90x90half)
   
-  ##sorting and reordering labels according to their respective regions
-  mat<-data.frame(SC_90X90)
-  mat$neworder<-label$neworder
-  reordered<-mat[order(mat$neworder),]
-  reordered$neworder<-NULL
-  reordered<-data.frame(t(reordered))
-  reordered$neworder<-label$neworder
-  reordered<-reordered[order(reordered$neworder),]
-  reordered$neworder<-NULL
+  nodeorder=as.numeric(rep(NA,90))
+  for (rowno in 1:90){
+    nodeorder[rowno]=which(label$neworder==rowno)
+  }
   
-  label<-label[order(label$neworder),]
-  reordered<-data.matrix(reordered)
-  colnames(reordered) = label$labels
-  rownames(reordered) = label$labels
-  
-  RegionsSC<-as.factor(label$region)
+  colnames(SC_90X90)=label$labels
+  rownames(SC_90X90)=label$labels
+  reordered=SC_90X90[nodeorder,nodeorder]
+  RegionsFC=as.factor(label$regionlabel)[nodeorder]
   
   ##graph object
   
-  graphobjSC<-graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
-  EvalSC<-edge_attr(graphobjSC, "weight", index = E(graphobjSC))
-  posnegSC<-EvalSC
-  posnegSC<-replace(posnegSC, which(posnegSC < 0), "2_neg")
-  posnegSC<-replace(posnegSC, which(posnegSC!="2_neg"), "1_pos")
+  graphobjSC=graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
+  EvalSC=edge_attr(graphobjSC, "weight", index = E(graphobjSC))
+  posnegSC=EvalSC
+  posnegSC=replace(posnegSC, which(posnegSC < 0), "2_neg")
+  posnegSC=replace(posnegSC, which(posnegSC!="2_neg"), "1_pos")
   
-  edge_attr(graphobjSC, "weight", index = E(graphobjSC))<-abs(EvalSC)
-  edge_attr(graphobjSC, "posSC", index = E(graphobjSC))<-posnegSC
+  edge_attr(graphobjSC, "weight", index = E(graphobjSC))=abs(EvalSC)
+  edge_attr(graphobjSC, "posSC", index = E(graphobjSC))=posnegSC
   
   #plot
   
-  SCplot<-ggraph(graphobjSC, layout = 'linear', circular = TRUE) +  
+  SCplot=ggraph(graphobjSC, layout = 'linear', circular = TRUE) +  
     geom_edge_arc(aes(color=posnegSC, alpha=weight), edge_width=edgethickness, show.legend = T) +
     scale_edge_alpha_continuous(guide="none")+
     scale_edge_color_manual(name="Edges", labels=c("Positive","Negative"),values=c(hot,cold))+
@@ -222,43 +215,36 @@ viz246=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
   require(grid)
   
   label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")
-  label$regionlabel <- factor(label$regionlabel,levels = c("Visual","Somatomotor","Dorsal Attention", "Ventral Attention",
+  label$regionlabel = factor(label$regionlabel,levels = c("Visual","Somatomotor","Dorsal Attention", "Ventral Attention",
                                                            "Limbic","Frontoparietal","Default Mode","Subcortical"))
-  FC_246x246half <- matrix(0, nrow = 246, ncol = 246)
-  FC_246x246half[upper.tri(FC_246x246half, diag = FALSE)] <- data
-  FC_246X246<-FC_246x246half+t(FC_246x246half)
+  FC_246x246half = matrix(0, nrow = 246, ncol = 246)
+  FC_246x246half[upper.tri(FC_246x246half, diag = FALSE)] = data
+  FC_246X246=FC_246x246half+t(FC_246x246half)
   
-  ##sorting and reordering labels according to their respective regions
-  mat<-data.frame(FC_246X246)
-  mat$neworder<-label$neworder
-  reordered<-mat[order(mat$neworder),]
-  reordered$neworder<-NULL
-  reordered<-data.frame(t(reordered))
-  reordered$neworder<-label$neworder
-  reordered<-reordered[order(reordered$neworder),]
-  reordered$neworder<-NULL
+  nodeorder=as.numeric(rep(NA,246))
+  for (rowno in 1:246){
+    nodeorder[rowno]=which(label$neworder==rowno)
+  }
   
-  label<-label[order(label$neworder),]
-  reordered<-data.matrix(reordered)
-  colnames(reordered) = label$labels
-  rownames(reordered) = label$labels
-  
-  RegionsFC<-label$regionlabel
+  colnames(FC_246X246)=label$labels
+  rownames(FC_246X246)=label$labels
+  reordered=FC_246X246[nodeorder,nodeorder]
+  RegionsFC=as.factor(label$regionlabel)[nodeorder]
   
   ##graph object
   
-  graphobjFC<-graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
-  EvalFC<-edge_attr(graphobjFC, "weight", index = E(graphobjFC))
-  posnegFC<-EvalFC
-  posnegFC<-replace(posnegFC, which(posnegFC < 0), "2_neg")
-  posnegFC<-replace(posnegFC, which(posnegFC!="2_neg"), "1_pos")
+  graphobjFC=graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
+  EvalFC=edge_attr(graphobjFC, "weight", index = E(graphobjFC))
+  posnegFC=EvalFC
+  posnegFC=replace(posnegFC, which(posnegFC < 0), "2_neg")
+  posnegFC=replace(posnegFC, which(posnegFC!="2_neg"), "1_pos")
   
-  edge_attr(graphobjFC, "weight", index = E(graphobjFC))<-abs(EvalFC)
-  edge_attr(graphobjFC, "posFC", index = E(graphobjFC))<-posnegFC
+  edge_attr(graphobjFC, "weight", index = E(graphobjFC))=abs(EvalFC)
+  edge_attr(graphobjFC, "posFC", index = E(graphobjFC))=posnegFC
   
   #plot
   
-  FCplot<-ggraph(graphobjFC, layout = 'linear', circular = TRUE) +  
+  FCplot=ggraph(graphobjFC, layout = 'linear', circular = TRUE) +  
     geom_edge_arc(aes(color=posnegFC, alpha=weight), edge_width=edgethickness, show.legend = T) +
     scale_edge_alpha_continuous(guide="none")+
     scale_edge_color_manual(name="Edges", labels=c("Positive","Negative"),values=c(hot,cold))+
@@ -290,8 +276,8 @@ viz246=function(data,edgethickness,width,height,hot,cold, colorscheme, filename)
 vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", width, height,edgethickness=0.8,filename="conn.png", colorscheme)
 {
   ## checked required packages
-  list.of.packages <- c("ggplot2", "ggraph","igraph","gridExtra","grid")
-  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+  list.of.packages = c("ggplot2", "ggraph","igraph","gridExtra","grid")
+  new.packages = list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) 
   {
     cat(paste("The following package(s) are required and will be installed:\n",new.packages,"\n"))
@@ -313,9 +299,9 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", width, height,edge
     viz219(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
   } else if (length(data)==30135) 
   { 
-      if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
-      if(missing("width")){width=1550}
-      if(missing("height")){height=1150}
+    if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
+    if(missing("width")){width=1550}
+    if(missing("height")){height=1150}
     
     viz246(data=data,hot=hot,cold=cold,width=width,height=height,edgethickness=edgethickness, filename=filename, colorscheme = colorscheme)  
   } else if (length(data)==4005) 
