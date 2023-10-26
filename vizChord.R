@@ -27,17 +27,13 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
   require(ggplot2)
   require(cowplot)
   
-  labelnameFC=c("Visual","Somatomotor","Dorsal Attention","Ventral Attention",
-                "Limbic","Frontoparietal","Default mode","Subcortical")
-  
   if(length(data)==23871){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE")}
   else if(length(data)==30135){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")} 
   else if(length(data)==7021){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE")} 
-  else if(length(data)==4005)
-    {
-      label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE")
-      labelnameFC=c("Frontal","Central","Temporal","Parietal","Limbic","Subcortical","Occipital")
-    }
+  else if(length(data)==4005){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE")}
+
+  label=label[order(label$region),]
+  labelnameFC=unique(label$regionlabel)
   
   regionnoFC=label$region
   noregions=length(labelnameFC)
