@@ -83,7 +83,7 @@ working directory. Do note that the distribution of nodes in the
 Schaefer-100 and Schaefer-200 parcellation schemes is not symmetrical
 across both hemispheres.
 
-![](FC_219.png)
+![](examples/FC_219.png)
 
 **b. Customizing optional parameters**
 
