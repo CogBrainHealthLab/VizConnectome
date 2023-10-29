@@ -113,7 +113,7 @@ and also play around with the color-related parameters,
     vizConnectogram(data=results, filename="FC_246.png", hot="red", cold="blue", colorscheme=colorcodes)
 
 The above code will output the following `FC_246.png` image in your
-working directory. ![](FC_246.png) As you can see it can be a little
+working directory. ![](examples/FC_246.png) As you can see it can be a little
 difficult to differentiate which network the nodes belong to because the
 colors are too similar. So do pay attention to the choice of colors if
 you were to adjust the `colorscheme` parameter
@@ -128,14 +128,14 @@ an example:
     results=sample(c(1,0, -1), 7021, replace = TRUE, prob = c(0.01, 0.98,0.01))
     vizConnectogram(data=results, filename="FC_119.png")
 
-![](FC_119.png)
+![](examples/FC_119.png)
 
 You can make it look a little less cluttered by reducing the thickness
 of the edge links. Note that the default value is `0.8`
 
     vizConnectogram(data=results, filename="FC_119_thinedges.png",edgethickness = 0.5)
 
-![](FC_119_thinedges.png) This will be very effective if the edges are
+![](examples/FC_119_thinedges.png) This will be very effective if the edges are
 nicely bundled up, which isn’t the case for the above. So if you tried
 to reduce the thickness of the edge links and it doesn’t help much, then
 perhaps you should use a chord diagram instead
@@ -174,7 +174,7 @@ Here’s a basic use of the `vizChord()` function on an input vector of
     source("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/vizChord.R?raw=TRUE")
     vizChord(data=results, filename="FC_chord119.png")
 
-![](FC_chord119.png)
+![](examples/FC_chord119.png)
 
 Just like the `vizConnectogram()` function, you can customize the `hot`
 and `cold` colors, as well as the colors for the networks. Note that if
@@ -192,4 +192,4 @@ networks) for the `colorscheme`.
 
     vizChord(data=results, filename="FC_chord12.png", hot="red", cold="blue", colorscheme = colorcodes)
 
-![](FC_chord12.png)
+![](examples/FC_chord12.png)
