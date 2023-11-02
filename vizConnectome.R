@@ -1,5 +1,4 @@
 ## FUNCTIONS FOR GENERATING CONNECTOGRAM PLOTS
-## LAST UPDATED: 25 October 2023
 ## FOR USE IN THE COGNITIVE AND BRAIN HEALTH LABORATORY
 
 ########################################################################################################
