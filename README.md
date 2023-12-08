@@ -60,7 +60,7 @@ lengths:
 The number of nodes to display in the connectogram plot will be
 automatically determined from the length of the input vector.
 
-For the first example, we will generate a sparse vector of 30135 random
+For the first example, we will generate a sparse vector of 23871 random
 numbers ranging from -1 to 1 and use this vector as the input vector to
 simulate the results derived from running the network-based statistics
 on the 219x219 FC matrices. The vector is ‘sparse’ because it contains
