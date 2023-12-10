@@ -1,4 +1,4 @@
-labels,region,order,oldorder,neworder,l,r,
+labels,region,order,oldorder,neworder,l,r,regionlabel
 Precentral,2,2,1,76,,76,central
 Precentral,2,2,2,15,15,,central
 Frontal_Sup,1,1,3,84,,84,frontal
