@@ -1,0 +1,247 @@
+oldorder,regionlabel,labels,neworder,region,hemi
+1,Frontoparietal,A8m,196,6,L
+2,Ventral Attention,A8m,73,4,R
+3,Default mode,A8dl,173,7,L
+4,Frontoparietal,A8dl,82,6,R
+5,Default mode,A9l,156,7,L
+6,Default mode,A9l,83,7,R
+7,Dorsal Attention,A6dl,210,3,L
+8,Dorsal Attention,A6dl,32,3,R
+9,Somatomotor,A6m,227,2,L
+10,Somatomotor,A6m,16,2,R
+11,Default mode,A9m,172,7,L
+12,Frontoparietal,A9m,84,6,R
+13,Default mode,A10m,155,7,L
+14,Default mode,A10m,85,7,R
+15,Ventral Attention,A9/46d,171,4,L
+16,Frontoparietal,A9/46d,48,6,R
+17,Frontoparietal,IFJ,170,6,L
+18,Frontoparietal,IFJ,74,6,R
+19,Frontoparietal,A46,169,6,L
+20,Frontoparietal,A46,75,6,R
+21,Frontoparietal,A9/46v,168,6,L
+22,Frontoparietal,A9/46v,76,6,R
+23,Default mode,A8vl,167,7,L
+24,Frontoparietal,A8vl,86,6,R
+25,Dorsal Attention,A6vl,209,3,L
+26,Dorsal Attention,A6vl,33,3,R
+27,Limbic,A10l,166,5,L
+28,Frontoparietal,A10l,59,6,R
+29,Frontoparietal,A44d,208,6,L
+30,Dorsal Attention,A44d,77,3,R
+31,Frontoparietal,IFS,165,6,L
+32,Frontoparietal,IFS,78,6,R
+33,Default mode,A45c,154,7,L
+34,Default mode,A45c,87,7,R
+35,Default mode,A45r,164,7,L
+36,Frontoparietal,A45r,88,6,R
+37,Ventral Attention,A44op,195,4,L
+38,Ventral Attention,A44op,49,4,R
+39,Ventral Attention,A44v,194,4,L
+40,Ventral Attention,A44v,50,4,R
+41,Default mode,A14m,153,7,L
+42,Default mode,A14m,89,7,R
+43,Default mode,A12/47o,152,7,L
+44,Default mode,A12/47o,90,7,R
+45,Limbic,A11l,163,5,L
+46,Frontoparietal,A11l,60,6,R
+47,Limbic,A11m,185,5,L
+48,Limbic,A11m,61,5,R
+49,Limbic,A13,184,5,L
+50,Limbic,A13,62,5,R
+51,Default mode,A12/47l,151,7,L
+52,Default mode,A12/47l,91,7,R
+53,Somatomotor,A4hf,226,2,L
+54,Somatomotor,A4hf,17,2,R
+55,Dorsal Attention,A6cdl,207,3,L
+56,Dorsal Attention,A6cdl,34,3,R
+57,Somatomotor,A4ul,225,2,L
+58,Somatomotor,A4ul,18,2,R
+59,Somatomotor,A4t,224,2,L
+60,Somatomotor,A4t,19,2,R
+61,Ventral Attention,A4tl,193,4,L
+62,Ventral Attention,A4tl,51,4,R
+63,Dorsal Attention,A6cvl,206,3,L
+64,Dorsal Attention,A6cvl,35,3,R
+65,Ventral Attention,A1/2/3ll,223,4,L
+66,Somatomotor,A1/2/3ll,52,2,R
+67,Somatomotor,A4ll,222,2,L
+68,Somatomotor,A4ll,20,2,R
+69,Limbic,A38m,183,5,L
+70,Limbic,A38m,63,5,R
+71,Somatomotor,A41/42,221,2,L
+72,Somatomotor,A41/42,21,2,R
+73,Somatomotor,TE1.0 and TE1.2,220,2,L
+74,Somatomotor,TE1.0 and TE1.2,22,2,R
+75,Somatomotor,A22c,219,2,L
+76,Somatomotor,A22c,23,2,R
+77,Limbic,A38l,182,5,L
+78,Limbic,A38l,64,5,R
+79,Default mode,A22r,150,7,L
+80,Default mode,A22r,92,7,R
+81,Default mode,A21c,162,7,L
+82,Frontoparietal,A21c,93,6,R
+83,Default mode,A21r,149,7,L
+84,Default mode,A21r,94,7,R
+85,Dorsal Attention,A37dl,205,3,L
+86,Dorsal Attention,A37dl,36,3,R
+87,Default mode,aSTS,148,7,L
+88,Default mode,aSTS,95,7,R
+89,Limbic,A20iv,181,5,L
+90,Limbic,A20iv,65,5,R
+91,Dorsal Attention,A37elv,204,3,L
+92,Dorsal Attention,A37elv,37,3,R
+93,Limbic,A20r,180,5,L
+94,Limbic,A20r,66,5,R
+95,Default mode,A20il,179,7,L
+96,Limbic,A20il,96,5,R
+97,Dorsal Attention,A37vl,203,3,L
+98,Dorsal Attention,A37vl,38,3,R
+99,Frontoparietal,A20cl,161,6,L
+100,Frontoparietal,A20cl,79,6,R
+101,Limbic,A20cv,178,5,L
+102,Limbic,A20cv,67,5,R
+103,Limbic,A20rv,177,5,L
+104,Limbic,A20rv,68,5,R
+105,Visual,A37mv,246,1,L
+106,Visual,A37mv,1,1,R
+107,Dorsal Attention,A37lv,245,3,L
+108,Visual,A37lv,39,1,R
+109,Limbic,A35/36r,176,5,L
+110,Limbic,A35/36r,69,5,R
+111,Limbic,A35/36c,244,5,L
+112,Visual,A35/36c,70,1,R
+113,Visual,TL,243,1,L
+114,Visual,TL,2,1,R
+115,Limbic,A28/34,175,5,L
+116,Limbic,A28/34,71,5,R
+117,Limbic,TI,174,5,L
+118,Limbic,TI,72,5,R
+119,Visual,TH,242,1,L
+120,Visual,TH,3,1,R
+121,Default mode,rpSTS,147,7,L
+122,Default mode,rpSTS,97,7,R
+123,Ventral Attention,cpSTS,192,4,L
+124,Ventral Attention,cpSTS,53,4,R
+125,Dorsal Attention,A7r,202,3,L
+126,Dorsal Attention,A7r,40,3,R
+127,Dorsal Attention,A7c,201,3,L
+128,Dorsal Attention,A7c,41,3,R
+129,Dorsal Attention,A5l,200,3,L
+130,Dorsal Attention,A5l,42,3,R
+131,Somatomotor,A7pc,218,2,L
+132,Somatomotor,A7pc,24,2,R
+133,Dorsal Attention,A7ip,199,3,L
+134,Dorsal Attention,A7ip,43,3,R
+135,Visual,A39c,241,1,L
+136,Visual,A39c,4,1,R
+137,Frontoparietal,A39rd,160,6,L
+138,Frontoparietal,A39rd,80,6,R
+139,Dorsal Attention,A40rd,198,3,L
+140,Dorsal Attention,A40rd,44,3,R
+141,Default mode,A40c,159,7,L
+142,Frontoparietal,A40c,98,6,R
+143,Dorsal Attention,A39rv,146,3,L
+144,Default mode,A39rv,45,7,R
+145,Somatomotor,A40rv,217,2,L
+146,Somatomotor,A40rv,25,2,R
+147,Frontoparietal,A7m,158,6,L
+148,Frontoparietal,A7m,81,6,R
+149,Somatomotor,A5m,197,2,L
+150,Dorsal Attention,A5m,26,3,R
+151,Visual,dmPOS,240,1,L
+152,Visual,dmPOS,5,1,R
+153,Default mode,A31,145,7,L
+154,Default mode,A31,99,7,R
+155,Somatomotor,A1/2/3ulhf,216,2,L
+156,Somatomotor,A1/2/3ulhf,27,2,R
+157,Somatomotor,A1/2/3tonIa,215,2,L
+158,Somatomotor,A1/2/3tonIa,28,2,R
+159,Dorsal Attention,A2,214,3,L
+160,Somatomotor,A2,46,2,R
+161,Somatomotor,A1/2/3tru,213,2,L
+162,Somatomotor,A1/2/3tru,29,2,R
+163,Somatomotor,G,212,2,L
+164,Somatomotor,G,30,2,R
+165,Subcortical,vIa,157,8,L
+166,Frontoparietal,vIa,104,6,R
+167,Ventral Attention,dIa,191,4,L
+168,Ventral Attention,dIa,54,4,R
+169,Ventral Attention,vId/vIg,190,4,L
+170,Ventral Attention,vId/vIg,55,4,R
+171,Somatomotor,dIg,211,2,L
+172,Somatomotor,dIg,31,2,R
+173,Ventral Attention,dId,189,4,L
+174,Ventral Attention,dId,56,4,R
+175,Default mode,A23d,144,7,L
+176,Default mode,A23d,100,7,R
+177,Subcortical,A24rv,142,8,L
+178,Subcortical,A24rv,105,8,R
+179,Default mode,A32p,188,7,L
+180,Ventral Attention,A32p,101,4,R
+181,Default mode,A23v,239,7,L
+182,Visual,A23v,102,1,R
+183,Ventral Attention,A24cd,187,4,L
+184,Ventral Attention,A24cd,57,4,R
+185,Ventral Attention,A23c,186,4,L
+186,Ventral Attention,A23c,58,4,R
+187,Default mode,A32sg,143,7,L
+188,Default mode,A32sg,103,7,R
+189,Visual,cLinG,238,1,L
+190,Visual,cLinG,6,1,R
+191,Visual,rCunG,237,1,L
+192,Visual,rCunG,7,1,R
+193,Visual,cCunG,236,1,L
+194,Visual,cCunG,8,1,R
+195,Visual,rLinG,235,1,L
+196,Visual,rLinG,9,1,R
+197,Visual,vmPOS,234,1,L
+198,Visual,vmPOS,10,1,R
+199,Visual,mOccG,233,1,L
+200,Visual,mOccG,11,1,R
+201,Dorsal Attention,V5/MT+,232,3,L
+202,Visual,V5/MT+,47,1,R
+203,Visual,OPC,231,1,L
+204,Visual,OPC,12,1,R
+205,Visual,iOccG,230,1,L
+206,Visual,iOccG,13,1,R
+207,Visual,msOccG,229,1,L
+208,Visual,msOccG,14,1,R
+209,Visual,lsOccG,228,1,L
+210,Visual,lsOccG,15,1,R
+211,Subcortical,mAmyg,141,8,L
+212,Subcortical,mAmyg,106,8,R
+213,Subcortical,lAmyg,140,8,L
+214,Subcortical,lAmyg,107,8,R
+215,Subcortical,rHipp,139,8,L
+216,Subcortical,rHipp,108,8,R
+217,Subcortical,cHipp,138,8,L
+218,Subcortical,cHipp,109,8,R
+219,Subcortical,vCa,137,8,L
+220,Subcortical,vCa,110,8,R
+221,Subcortical,GP,136,8,L
+222,Subcortical,GP,111,8,R
+223,Subcortical,NAC,135,8,L
+224,Subcortical,NAC,112,8,R
+225,Subcortical,vmPu,134,8,L
+226,Subcortical,vmPu,113,8,R
+227,Subcortical,dCa,133,8,L
+228,Subcortical,dCa,114,8,R
+229,Subcortical,dlPu,132,8,L
+230,Subcortical,dlPu,115,8,R
+231,Subcortical,mPFtha,131,8,L
+232,Subcortical,mPFtha,116,8,R
+233,Subcortical,mPMtha,130,8,L
+234,Subcortical,mPMtha,117,8,R
+235,Subcortical,Stha,129,8,L
+236,Subcortical,Stha,118,8,R
+237,Subcortical,rTtha,128,8,L
+238,Subcortical,rTtha,119,8,R
+239,Subcortical,PPtha,127,8,L
+240,Subcortical,PPtha,120,8,R
+241,Subcortical,Otha,126,8,L
+242,Subcortical,Otha,121,8,R
+243,Subcortical,cTtha,125,8,L
+244,Subcortical,cTtha,122,8,R
+245,Subcortical,lPFtha,124,8,L
+246,Subcortical,lPFtha,123,8,R
