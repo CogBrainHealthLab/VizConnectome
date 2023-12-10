@@ -22,17 +22,12 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
   require(grid)
   
   ##selecting atlas
-  labels.list=list(read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE"),
-                   read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE"),
-                   read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE"),
-                   read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE"))
+  labels.url=c("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE",
+              "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE",
+              "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE",
+              "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")
   
-  nodes=rep(NA,length(labels.list))
-  for(atlas in 1:length(labels.list))
-  {
-    nodes[atlas]=nrow(labels.list[[atlas]])  
-  }          
-  edge_lengths=((nodes*nodes)-nodes)/2
+  edge_lengths=c(4005,7021,23871,30135)
   
   if(is.na(match(length(data),edge_lengths)))
   {
@@ -63,10 +58,10 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
   param$nodelevels[3:4]=param$nodelevels[2]
   
   ##plot parameters
-  if(missing("colorscheme")){colorscheme = param$nodecol[[atlas]]}
-  nnodes=nodes[atlas]
-  label=labels.list[[atlas]]
+  label=read.csv(labels.url[atlas])
   label$regionlabel = factor(label$regionlabel,levels = param$nodelevels[[atlas]])
+  if(missing("colorscheme")){colorscheme = param$nodecol[[atlas]]}
+  nnodes=nrow(label)
   
   ##rehaping data into connectivity matrix
   
@@ -130,5 +125,5 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
 ########################################################################################################
 ##EXAMPLE
 
-#data=sample(c(1,0, -1), 30135, replace = T, prob = c(0.001, 0.998,0.001))
-#vizConnectogram(data=data,filename = "FC246.png")
+##data=sample(c(1,0, -1), 30135, replace = T, prob = c(0.001, 0.998,0.001))
+##vizConnectogram(data=data, filename="FC246.png")
