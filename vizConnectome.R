@@ -96,7 +96,7 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
     geom_edge_arc(aes(color=posnegFC, alpha=weight), edge_width=edgethickness, show.legend = T) +
     scale_edge_alpha_continuous(guide="none")+
     scale_edge_color_manual(name="Edges", labels=c("Positive","Negative"),values=c(hot,cold))+
-    scale_color_manual(values =param$nodecol[[atlas]], name="Network")+
+    scale_color_manual(values =colorscheme, name="Network")+
     geom_node_point(aes(colour = RegionsFC),size=param$nodesize[atlas], shape=19,show.legend = T) +
     geom_node_text(aes(label = name, x = x * 1.03, y = y* 1.03,
                        angle = ifelse(atan(-(x/y))*(180/pi) < 0,
