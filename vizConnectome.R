@@ -95,10 +95,8 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
     ggplot2::scale_color_manual(values =colorscheme, name="Network")+
     ggraph::geom_node_point(ggplot2::aes(colour = RegionsFC),size=param$nodesize[atlas], shape=19,show.legend = T) +
     ggraph::geom_node_text(ggplot2::aes(label = name, x = x * 1.03, y = y* 1.03,
-                       angle = ifelse(atan(-(x/y))*(180/pi) < 0,
-                                      90 + atan(-(x/y))*(180/pi),
-                                      270 + atan(-x/y)*(180/pi)),
-                       hjust = ifelse(x > 0, 0 ,1)), size=param$nodesize[atlas]) +    
+                                    angle = ifelse(atan(-(x/y))*(180/pi) < 0,90 + atan(-(x/y))*(180/pi), 270 + atan(-x/y)*(180/pi)),
+                                    hjust = ifelse(x > 0, 0 ,1)), size=param$nodesize[atlas]) +    
     ggplot2::guides(edge_color = ggplot2::guide_legend(override.aes = list(shape = NA)),color= ggplot2::guide_legend(override.aes = list(edge_width = NA))) +
     ggraph::theme_graph(background = 'white', text_colour = 'black', bg_text_colour = 'black')+
     ggplot2::expand_limits(x = param$xlim[[atlas]], y = param$ylim[[atlas]])+
