@@ -3,40 +3,25 @@
 
 ########################################################################################################
 ########################################################################################################
-quad = function(len)
-{
-  a=1
-  b=-1
-  c=-2*len
-  a = as.complex(a)
-  answer = c((-b + sqrt(b^2 - 4 * a * c)) / (2 * a),
-              (-b - sqrt(b^2 - 4 * a * c)) / (2 * a))
-  if(all(Im(answer) == 0)) answer = Re(answer)
-  if(answer[1] == answer[2]) return(max(answer[1]))
-  max(answer)
-}
-########################################################################################################
-########################################################################################################
 
 vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
 {
   localenv = environment() 
-  require(circlize)
-  require(ggplotify)
-  require(ggplot2)
-  require(cowplot)
   
-  if(length(data)==23871){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE")}
-  else if(length(data)==30135){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")} 
-  else if(length(data)==7021){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE")} 
-  else if(length(data)==4005){label=read.csv("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE")}
-
+  labels.url=c("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")
+  
+  edge_lengths=c(4005,7021,23871,30135)
+  match(length(data),edge_lengths)
+  label=read.csv(labels.url[match(length(data),edge_lengths)])
   label=label[order(label$region),]
   labelnameFC=unique(label$regionlabel)
   
   regionnoFC=label$region
   noregions=length(labelnameFC)
-  nnode=quad(length(data))
+  nnode=nrow(label)
   ##color parameters
   
   pos_color_range= colorRampPalette(c("white",hot))
@@ -79,19 +64,19 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
   datFC=data.frame(datFC, stringsAsFactors = F)
   
   colnames(datFC)=c("from","to","value")
-  col_funFC = colorRamp2(range(datFC$value), c(cold,hot))
+  col_funFC = circlize::colorRamp2(range(datFC$value), c(cold,hot))
   
   for (label in 1:noregions){
     datFC$from[which(datFC$from==label)]=labelnameFC[label]
     datFC$to[which(datFC$to==label)]=labelnameFC[label]
   }
   colarrFC=array()
-
+  
   if(NROW(which(datFC$value==0))==0){
     datrmFC=datFC
   } else {
     datrmFC=datFC[-which(datFC$value==0),]}
-
+  
   if(length(unique(c(datrmFC$from,datrmFC$to)))< noregions)
   {
     stop(paste("Connections are absent in",noregions-length(unique(c(datrmFC$from,datrmFC$to))),"of the networks. Please use a connectogram instead",sep=" "))
@@ -100,27 +85,27 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
   for (datval in which(datrmFC$value>0)){
     colarrFC[datval]=pos_color_val[round(abs(datrmFC$value[datval])/max(abs(datrmFC$value))*100)+1]
   }
-
+  
   for (datval in which(datrmFC$value<0)){
     colarrFC[datval]=neg_color_val[round(abs(datrmFC$value[datval])/max(abs(datrmFC$value))*100)+1]
   }
-
-  FCchord=as.grob(~suppressWarnings(chordDiagram(datrmFC, col=colarrFC, order=labelnameFC, self.link = 2,
-                                 grid.col=colorscheme,annotationTrack = c("grid","name"),link.border=colarrFC,)),envir = localenv)
-
-  legend.plot=ggplot(datFC, aes(color=value, x=value, y=value))+
-    scale_colour_gradient2(name="Connectivity strength",low=hot,mid="white",high=cold,
+  
+  FCchord=ggplotify::as.grob(~suppressWarnings(circlize::chordDiagram(datrmFC, col=colarrFC, order=labelnameFC, self.link = 2,
+                                                 grid.col=colorscheme,annotationTrack = c("grid","name"),link.border=colarrFC,)),envir = localenv)
+  
+  legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
+    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=hot,mid="white",high=cold,
                            guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
                            labels=c("Strong negative","Strong positive"))+
-    geom_point()+
-    guides(color=guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
-    theme(legend.position = "bottom",legend.title=element_text(face="bold", size=7,vjust=1), 
-          legend.text =element_text(size=6))
-  legend = get_legend(legend.plot)
+    ggplot2::geom_point()+
+    ggplot2::guides(color=ggplot2::guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
+    ggplot2::theme(legend.position = "bottom",legend.title=ggplot2::element_text(face="bold", size=7,vjust=1), 
+          legend.text =ggplot2::element_text(size=6))
+  legend = cowplot::get_legend(legend.plot)
   
   png(filename =filename, width = width, height = height, res = 300)
-    p=plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
-    print(p)
+  p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
+  print(p)
   dev.off()
 }
 
@@ -130,10 +115,6 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
 vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
 {
   localenv = environment() 
-  require(circlize)
-  require(ggplotify)
-  require(ggplot2)
-  require(cowplot)
 
   nodesname<-c("Auditory","Cinguloopercular","Cinguloparietal",
                "Default\nmode","Dorsal\nattention","Frontoparietal",
@@ -171,7 +152,7 @@ vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
   
   #sets up the color function such that darker colors correspond to stronger connections
   
-  col_funFC = colorRamp2(range(datFC$value), c(hot,cold))
+  col_funFC = circlize::colorRamp2(range(datFC$value), c(hot,cold))
   
   for (label in 1:no_nodes){
     datFC$from[which(datFC$from==label)]<-nodesname[label]
@@ -187,20 +168,20 @@ vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
   }
   
   #generate and saves the FC chord diagram to the FCchord object
-  FCchord<-as.grob(~chordDiagram(datFC, col=colarrFC, self.link = 1, 
+  FCchord=ggplotify::as.grob(~circlize::chordDiagram(datFC, col=colarrFC, self.link = 1, 
                                  grid.col=colorscheme[1:12], annotationTrack = c("grid","name"),link.border=colarrFC),envir = localenv)
-  legend.plot=ggplot(datFC, aes(color=value, x=value, y=value))+
-    scale_colour_gradient2(name="Connectivity strength",low=hot,mid="white",high=cold,
+  legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
+    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=hot,mid="white",high=cold,
                            guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
                            labels=c("Strong negative","Strong positive"))+
-    geom_point()+
-    guides(color=guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
-    theme(legend.position = "bottom",legend.title=element_text(face="bold", size=7,vjust=1), 
-          legend.text =element_text(size=6))
-  legend = get_legend(legend.plot)
+    ggplot2::geom_point()+
+    ggplot2::guides(color=ggplot2::guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
+    ggplot2::theme(legend.position = "bottom",legend.title=ggplot2::element_text(face="bold", size=7,vjust=1), 
+          legend.text =ggplot2::element_text(size=6))
+  legend = cowplot::get_legend(legend.plot)
   
   png(filename =filename, width = width, height = height, res = 300)
-  p=plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
+  p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
   print(p)
   dev.off()
   
@@ -232,7 +213,7 @@ vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,f
   } else if(length(data)==78)
   {
     if(missing("colorscheme"))
-      {
+    {
       colorscheme=c("#A71B4BFF","#D04939FF","#EB7803FF","#F5A736FF","#FBCF6FFF","#FEF1A6FF","#E2F8B5FF","#9CE5ADFF","#43CBB1FF","#00AAB6FF","#0080B2FF","#584B9FFF") 
     }
     vizChord_12x12(data=data,hot=hot,cold=cold,width=width,height=height,filename=filename, colorscheme = colorscheme)  
@@ -243,5 +224,5 @@ vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,f
 ########################################################################################################
 ##EXAMPLE
 
-#data = runif(78, min = -1, max = 1)
-#vizChord(data=data, filename="FCchord.png")
+##data = runif(78, min = -1, max = 1)
+##vizChord(data=data, filename="FCchord.png")
