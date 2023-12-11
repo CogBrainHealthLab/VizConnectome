@@ -33,7 +33,7 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
   }
 
   ##parameters for all atlases
-  param=list(NA,NA,NA,NA,NA,NA,NA)
+  param=list(NA,NA,NA,NA,NA)
   names(param)=c("nodecol","nodesize","xlim","ylim","nodelevels")
   param$nodecol=list(c("#D53E4F","#FC8D59","#FEE08B","#FFFFBF","#E6F598","#99D594","#3288BD"),
                      c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD"))
