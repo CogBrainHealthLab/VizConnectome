@@ -70,8 +70,8 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
     nodeorder[rowno]=which(label$neworder==rowno)
   }
   
-  colnames(conmat_NxN)=label$oldorder
-  rownames(conmat_NxN)=label$oldorder
+  colnames(conmat_NxN)=label$labels
+  rownames(conmat_NxN)=label$labels
   reordered=conmat_NxN[nodeorder,nodeorder]
   RegionsFC=as.factor(label$regionlabel)[nodeorder]
   
