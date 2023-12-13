@@ -6,7 +6,7 @@
 
 vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,filename="conn.png", colorscheme)
 {
-  ## checked require packages and load them
+  ## check require packages
   list.of.packages = c("ggplot2", "ggraph","igraph","gridExtra","grid")
   new.packages = list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   
