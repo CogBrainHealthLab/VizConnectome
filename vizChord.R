@@ -190,7 +190,7 @@ vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
 ########################################################################################################
 vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,filename="conn.png", colorscheme)
 {
-  ## checked required packages
+  ## check required packages
   list.of.packages = c("ggplot2", "circlize","cowplot","ggplotify")
   new.packages = list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
   if(length(new.packages)) 
