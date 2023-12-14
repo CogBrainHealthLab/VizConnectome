@@ -117,6 +117,6 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
 ########################################################################################################
 
 ##EXAMPLE
-
-##data=sample(c(1,0, -1), 30135, replace = T, prob = c(0.001, 0.998,0.001))
-##vizConnectogram(data=data, filename="FC246.png")
+#source("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/vizConnectome.R?raw=TRUE")
+#data=sample(c(1,0, -1), 30135, replace = T, prob = c(0.001, 0.998,0.001))
+#vizConnectogram(data=data, filename="FC246.png")
