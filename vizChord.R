@@ -171,7 +171,7 @@ vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
   FCchord=ggplotify::as.grob(~circlize::chordDiagram(datFC, col=colarrFC, self.link = 1, 
                                  grid.col=colorscheme[1:12], annotationTrack = c("grid","name"),link.border=colarrFC),envir = localenv)
   legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
-    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=hot,mid="white",high=cold,
+    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=cold,mid="white",high=hot,
                            guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
                            labels=c("Strong negative","Strong positive"))+
     ggplot2::geom_point()+
@@ -223,6 +223,6 @@ vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,f
 ########################################################################################################
 ########################################################################################################
 ##EXAMPLE
-
-##data = runif(78, min = -1, max = 1)
-##vizChord(data=data, filename="FCchord.png")
+#source("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/vizChord.R?raw=TRUE")
+#data = runif(78, min = -1, max = 1)
+#vizChord(data=data, filename="FCchord.png")
