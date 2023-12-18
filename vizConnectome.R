@@ -4,6 +4,65 @@
 ########################################################################################################
 ########################################################################################################
 
+edgelist=function(data)
+{
+  ## check require packages
+  list.of.packages = c("ggplot2", "ggraph","igraph","gridExtra","grid")
+  new.packages = list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+  
+  if(length(new.packages)) 
+  {
+    cat(paste("The following package(s) are required and will be installed:\n",new.packages,"\n"))
+    install.packages(new.packages)
+  }  
+  
+  ##selecting atlas
+  labels.url=c("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")
+  
+  edge_lengths=c(4005,7021,23871,30135)
+  
+  if(is.na(match(length(data),edge_lengths)))
+  {
+    stop("The length of the input vector does not fit any of the recognized parcellation schemes. The input vector should contain 4005, 7021, 23871 or 30135 values")      
+  } else
+  {
+    atlas=match(length(data),edge_lengths)
+  }
+  
+  ##plot parameters
+  label=read.csv(labels.url[atlas])
+  label=label[order(label$oldorder),]
+  label$labels=paste(label$hemi,"_",label$labels,sep="")
+  nnodes=nrow(label)
+  
+  ##rehaping data into connectivity matrix
+  
+  conmat_NxNhalf = matrix(0, nrow = nnodes, ncol = nnodes)
+  conmat_NxNhalf[upper.tri(conmat_NxNhalf, diag = FALSE)] = data
+  conmat_NxN=conmat_NxNhalf+t(conmat_NxNhalf)
+  
+  nodeorder=as.numeric(rep(NA,nnodes))
+  for (rowno in 1:nnodes){
+    nodeorder[rowno]=which(label$neworder==rowno)
+  }
+  
+  colnames(conmat_NxN)=label$labels
+  rownames(conmat_NxN)=label$labels
+  reordered=conmat_NxN[nodeorder,nodeorder]
+  RegionsFC=as.factor(label$regionlabel)[nodeorder]
+  
+  ##graph object
+  graphobj=igraph::graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
+  return(igraph::as_edgelist(graphobj))
+  
+}
+
+########################################################################################################
+########################################################################################################
+
 vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,filename="conn.png", colorscheme)
 {
   ## check require packages
