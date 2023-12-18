@@ -55,9 +55,11 @@ edgelist=function(data)
   RegionsFC=as.factor(label$regionlabel)[nodeorder]
   
   ##graph object
-  graphobj=igraph::graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
-  return(igraph::as_edgelist(graphobj))
   
+  graphobj=igraph::graph_from_adjacency_matrix(reordered, mode="undirected", diag=FALSE, weighted=T)
+  edgelist=data.frame(cbind(igraph::get.edgelist(graphobj) , igraph::E(graphobj)$weight))
+  names(edgelist)=c("node_1","node_2","weight")
+  return(edgelist)
 }
 
 ########################################################################################################
