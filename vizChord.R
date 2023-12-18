@@ -93,7 +93,7 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
                                                  grid.col=colorscheme,annotationTrack = c("grid","name"),link.border=colarrFC,)),envir = localenv)
   
   legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
-    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=hot,mid="white",high=cold,
+    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=cold,mid="white",high=hot,
                            guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
                            labels=c("Strong negative","Strong positive"))+
     ggplot2::geom_point()+
