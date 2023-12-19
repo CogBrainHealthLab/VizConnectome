@@ -108,7 +108,7 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
                   c(-1.2, 1),
                   c(-1.15, 1.2),
                   c(-1.2, 1))
-  ##plot parameters
+  
   label=read.csv(labels.url[atlas])
   label=label[order(label$oldorder),]
   label$regionlabel = factor(label$regionlabel,levels = param$nodelevels[[atlas]])
