@@ -111,11 +111,10 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
   
   label=read.csv(labels.url[atlas])
   label=label[order(label$oldorder),]
+  param$nodelevels=unique(label$regionlabel)
   label$regionlabel = factor(label$regionlabel,levels = param$nodelevels[[atlas]])
   if(missing("colorscheme")){colorscheme = param$nodecol[[atlas]]}
   nnodes=nrow(label)
-  
-  param$nodelevels=unique(label$regionlabel)
   
   ##rehaping data into connectivity matrix
   
