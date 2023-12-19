@@ -108,10 +108,12 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
                   c(-1.2, 1),
                   c(-1.15, 1.2),
                   c(-1.2, 1))
+  param$nodelevels=list(c("frontal","central","temporal","parietal","limbic","subcortical","occipital"),
+                        c("Visual", "Somatomotor", "Dorsal Attention","Ventral Attention","Limbic","Frontoparietal","Default mode","Subcortical"))
+  param$nodelevels[3:4]=param$nodelevels[2]
   
   label=read.csv(labels.url[atlas])
   label=label[order(label$oldorder),]
-  param$nodelevels=unique(label$regionlabel)
   label$regionlabel = factor(label$regionlabel,levels = param$nodelevels[[atlas]])
   if(missing("colorscheme")){colorscheme = param$nodecol[[atlas]]}
   nnodes=nrow(label)
