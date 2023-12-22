@@ -65,7 +65,7 @@ edgelist=function(data)
 ########################################################################################################
 ########################################################################################################
 
-vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,filename="conn.png", colorscheme)
+vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,filename="conn.png", colorscheme, colorbar=T)
 {
   ## check require packages
   list.of.packages = c("ggplot2", "ggraph","igraph","gridExtra","grid")
@@ -76,12 +76,12 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
     cat(paste("The following package(s) are required and will be installed:\n",new.packages,"\n"))
     install.packages(new.packages)
   }  
-
+  
   ##selecting atlas
   labels.url=c("https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsSC_AAL90.csv?raw=TRUE",
-              "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE",
-              "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE",
-              "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer119.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_schaefer219.csv?raw=TRUE",
+               "https://github.com/CogBrainHealthLab/VizConnectome/blob/main/labels/labelsFC_brainnetome_yeo.csv?raw=TRUE")
   
   edge_lengths=c(4005,7021,23871,30135)
   
@@ -92,7 +92,7 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
   {
     atlas=match(length(data),edge_lengths)
   }
-
+  
   ##parameters for all atlases
   param=list(NA,NA,NA,NA,NA)
   names(param)=c("nodecol","nodesize","xlim","ylim","nodelevels")
@@ -154,23 +154,35 @@ vizConnectogram=function(data, hot="#F8766D", cold="#00BFC4", edgethickness=0.8,
     ggplot2::scale_color_manual(values =colorscheme, name="Network")+
     ggraph::geom_node_point(ggplot2::aes(colour = RegionsFC),size=param$nodesize[atlas], shape=19,show.legend = T) +
     ggraph::geom_node_text(ggplot2::aes(label = name, x = x * 1.03, y = y* 1.03,
-                                    angle = ifelse(atan(-(x/y))*(180/pi) < 0,90 + atan(-(x/y))*(180/pi), 270 + atan(-x/y)*(180/pi)),
-                                    hjust = ifelse(x > 0, 0 ,1)), size=param$nodesize[atlas]) +    
-    ggplot2::guides(edge_color = ggplot2::guide_legend(override.aes = list(shape = NA)),color= ggplot2::guide_legend(override.aes = list(edge_width = NA))) +
+                                        angle = ifelse(atan(-(x/y))*(180/pi) < 0,90 + atan(-(x/y))*(180/pi), 270 + atan(-x/y)*(180/pi)),
+                                        hjust = ifelse(x > 0, 0 ,1)), size=param$nodesize[atlas]) +    
     ggraph::theme_graph(background = 'white', text_colour = 'black', bg_text_colour = 'black')+
     ggplot2::expand_limits(x = param$xlim[[atlas]], y = param$ylim[[atlas]])+
     ggplot2::theme(plot.margin = rep(ggplot2::unit(0,"null"),4),
-          legend.title=ggplot2::element_text(size=5,face = "bold"),
-          legend.text=ggplot2::element_text(size=5),
-          legend.position = c(1,0),legend.justification=c(1,0), legend.key.height = ggplot2::unit(c(0, 0, 0, 0), "cm"))
+                   legend.title=ggplot2::element_text(size=5,face = "bold"),
+                   legend.text=ggplot2::element_text(size=5),
+                   legend.position = c(1,0),legend.justification=c(1,0), legend.key.height = ggplot2::unit(c(0, 0, 0, 0), "cm"))
   
-    png(filename=filename, width =1550, height = 1200, res=300)
-      suppressWarnings(
-        gridExtra::grid.arrange(FCplot, nrow=1, ncol=1, 
-                    left=grid::textGrob("Left hemisphere",gp = grid::gpar(fontface=2,fontsize = 6),rot=90, hjust = 0.5,x = 0.5), 
-                    right=grid::textGrob("Right hemisphere",gp = grid::gpar(fontface=2,fontsize = 6),rot=90, hjust = 0.5,x = -3))
-      )
-    dev.off()
+  if(colorbar==T)
+  {
+    FCplot=FCplot+
+      ggraph::scale_edge_color_manual(name="Edges", labels=c("Positive","Negative"),values=c(hot,cold))+
+      ggplot2::guides(edge_color = ggplot2::guide_legend(override.aes = list(shape = NA)),color= ggplot2::guide_legend(override.aes = list(edge_width = NA)))
+  } else if(colorbar==F)
+  {
+    FCplot=FCplot+
+      ggraph::scale_edge_color_manual(name="Edges", labels=c("Positive","Negative"),values=c(hot,cold),guide="none")+
+      ggplot2::guides(color= ggplot2::guide_legend(override.aes = list(edge_width = NA)))
+  }
+  
+  
+  png(filename=filename, width =1550, height = 1200, res=300)
+  suppressWarnings(
+    gridExtra::grid.arrange(FCplot, nrow=1, ncol=1, 
+                            left=grid::textGrob("Left hemisphere",gp = grid::gpar(fontface=2,fontsize = 6),rot=90, hjust = 0.5,x = 0.5), 
+                            right=grid::textGrob("Right hemisphere",gp = grid::gpar(fontface=2,fontsize = 6),rot=90, hjust = 0.5,x = -3))
+  )
+  dev.off()
 }
 ########################################################################################################
 ########################################################################################################
