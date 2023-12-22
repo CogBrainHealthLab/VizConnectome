@@ -3,7 +3,7 @@
 
 ########################################################################################################
 ########################################################################################################
-vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename)
+vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename, colorbar)
 {
   localenv = environment() 
   
@@ -167,6 +167,8 @@ vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
   }
   
   #generate and saves the FC chord diagram to the FCchord object
+  if(colorbar==T)
+  {
   FCchord=ggplotify::as.grob(~circlize::chordDiagram(datFC, col=colarrFC, self.link = 1, 
                                  grid.col=colorscheme[1:12], annotationTrack = c("grid","name"),link.border=colarrFC),envir = localenv)
   legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
@@ -178,16 +180,23 @@ vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
     ggplot2::theme(legend.position = "bottom",legend.title=ggplot2::element_text(face="bold", size=7,vjust=1), 
           legend.text =ggplot2::element_text(size=6))
   legend = cowplot::get_legend(legend.plot)
-  
+    
   png(filename =filename, width = width, height = height, res = 300)
   p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
   print(p)
   dev.off()
-  
+  }
+  else
+  {
+  png(filename =filename, width = width, height = height*0.95, res = 300)
+  p=cowplot::plot_grid(FCchord,ncol=1, nrow=1)
+  print(p)
+  dev.off()
+  }
 }
 ########################################################################################################
 ########################################################################################################
-vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,filename="conn.png", colorscheme)
+vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,filename="conn.png", colorscheme, colorbar=TRUE)
 {
   ## check required packages
   list.of.packages = c("ggplot2", "circlize","cowplot","ggplotify")
@@ -202,13 +211,13 @@ vizChord=function(data, hot="#F8766D", cold="#00BFC4", width=1800, height=1800,f
   {
     if(missing("colorscheme")){colorscheme = c("#D53E4F","#F46D43","#FDAE61","#FEE08B","#E6F598","#ABDDA4","#66C2A5","#3288BD")}
     
-    vizChord_edge(data=data,hot=hot,cold=cold,width=width,height=height,filename=filename, colorscheme = colorscheme)  
+    vizChord_edge(data=data,hot=hot,cold=cold,width=width,height=height,filename=filename, colorscheme = colorscheme, colorbar=colorbar)  
     
   } else if (length(data)==4005) 
   {    
     if(missing("colorscheme")){colorscheme = c("#D53E4F","#FC8D59","#FEE08B","#FFFFBF","#E6F598","#99D594","#3288BD")}
     
-    vizChord_edge(data=data,hot=hot,cold=cold,width=width,height=height,filename=filename, colorscheme = colorscheme)  
+    vizChord_edge(data=data,hot=hot,cold=cold,width=width,height=height,filename=filename, colorscheme = colorscheme, colorbar=colorbar)  
   } else if(length(data)==78)
   {
     if(missing("colorscheme"))
