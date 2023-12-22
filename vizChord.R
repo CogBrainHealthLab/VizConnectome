@@ -106,7 +106,7 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename, colorb
     png(filename =filename, width = width, height = height, res = 300)
     p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
     print(p)
-  } else
+  } else if(colorbar==F)
   {
     png(filename =filename, width = width, height = height*0.95, res = 300)
     p=cowplot::plot_grid(FCchord,ncol=1, nrow=1)
