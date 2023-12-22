@@ -90,21 +90,29 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename, colorb
   }
   
   FCchord=ggplotify::as.grob(~suppressWarnings(circlize::chordDiagram(datrmFC, col=colarrFC, order=labelnameFC, self.link = 2,
-                                                 grid.col=colorscheme,annotationTrack = c("grid","name"),link.border=colarrFC,)),envir = localenv)
-  
-  legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
-    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=cold,mid="white",high=hot,
-                           guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
-                           labels=c("Strong negative","Strong positive"))+
-    ggplot2::geom_point()+
-    ggplot2::guides(color=ggplot2::guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
-    ggplot2::theme(legend.position = "bottom",legend.title=ggplot2::element_text(face="bold", size=7,vjust=1), 
-          legend.text =ggplot2::element_text(size=6))
-  legend = cowplot::get_legend(legend.plot)
-  
-  png(filename =filename, width = width, height = height, res = 300)
-  p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
-  print(p)
+                                                                      grid.col=colorscheme,annotationTrack = c("grid","name"),link.border=colarrFC,)),envir = localenv)
+  if(colorbar==T)
+  {
+    legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
+      ggplot2::scale_colour_gradient2(name="Connectivity strength",low=cold,mid="white",high=hot,
+                                      guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
+                                      labels=c("Strong negative","Strong positive"))+
+      ggplot2::geom_point()+
+      ggplot2::guides(color=ggplot2::guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
+      ggplot2::theme(legend.position = "bottom",legend.title=ggplot2::element_text(face="bold", size=7,vjust=1), 
+                     legend.text =ggplot2::element_text(size=6))
+    legend = cowplot::get_legend(legend.plot)
+    
+    png(filename =filename, width = width, height = height, res = 300)
+    p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
+    print(p)
+  } else
+  {
+    png(filename =filename, width = width, height = height*0.95, res = 300)
+    p=cowplot::plot_grid(FCchord,ncol=1, nrow=1)
+    print(p)
+  }
+
   dev.off()
 }
 
@@ -114,7 +122,7 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename, colorb
 vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
 {
   localenv = environment() 
-
+  
   nodesname<-c("Auditory","Cinguloopercular","Cinguloparietal",
                "Default\nmode","Dorsal\nattention","Frontoparietal",
                "Retrosplenial\ntemporal","Sensorimotor\nhand","Sensorimotor\nmouth",
@@ -169,29 +177,28 @@ vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
   #generate and saves the FC chord diagram to the FCchord object
   if(colorbar==T)
   {
-  FCchord=ggplotify::as.grob(~circlize::chordDiagram(datFC, col=colarrFC, self.link = 1, 
-                                 grid.col=colorscheme[1:12], annotationTrack = c("grid","name"),link.border=colarrFC),envir = localenv)
-  legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
-    ggplot2::scale_colour_gradient2(name="Connectivity strength",low=cold,mid="white",high=hot,
-                           guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
-                           labels=c("Strong negative","Strong positive"))+
-    ggplot2::geom_point()+
-    ggplot2::guides(color=ggplot2::guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
-    ggplot2::theme(legend.position = "bottom",legend.title=ggplot2::element_text(face="bold", size=7,vjust=1), 
-          legend.text =ggplot2::element_text(size=6))
-  legend = cowplot::get_legend(legend.plot)
+    FCchord=ggplotify::as.grob(~circlize::chordDiagram(datFC, col=colarrFC, self.link = 1, 
+                                                       grid.col=colorscheme[1:12], annotationTrack = c("grid","name"),link.border=colarrFC),envir = localenv)
+    legend.plot=ggplot2::ggplot(datFC, ggplot2::aes(color=value, x=value, y=value))+
+      ggplot2::scale_colour_gradient2(name="Connectivity strength",low=cold,mid="white",high=hot,
+                                      guide = "colourbar", limits=c(-1,1), breaks=c(-1,1),
+                                      labels=c("Strong negative","Strong positive"))+
+      ggplot2::geom_point()+
+      ggplot2::guides(color=ggplot2::guide_colorbar(ticks=F,title.position = "left",barheight = 0.5))+
+      ggplot2::theme(legend.position = "bottom",legend.title=ggplot2::element_text(face="bold", size=7,vjust=1), 
+                     legend.text =ggplot2::element_text(size=6))
+    legend = cowplot::get_legend(legend.plot)
     
-  png(filename =filename, width = width, height = height, res = 300)
-  p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
-  print(p)
-  dev.off()
-  }
-  else
+    png(filename =filename, width = width, height = height, res = 300)
+    p=cowplot::plot_grid(FCchord,legend,ncol=1, nrow=2, rel_heights = c(0.95,0.05))
+    print(p)
+    dev.off()
+  } else
   {
-  png(filename =filename, width = width, height = height*0.95, res = 300)
-  p=cowplot::plot_grid(FCchord,ncol=1, nrow=1)
-  print(p)
-  dev.off()
+    png(filename =filename, width = width, height = height*0.95, res = 300)
+    p=cowplot::plot_grid(FCchord,ncol=1, nrow=1)
+    print(p)
+    dev.off()
   }
 }
 ########################################################################################################
