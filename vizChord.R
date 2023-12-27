@@ -119,7 +119,7 @@ vizChord_edge=function(data,width,height,hot,cold, colorscheme, filename, colorb
 ########################################################################################################
 ########################################################################################################
 
-vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename)
+vizChord_12x12=function(data,width,height,hot,cold, colorscheme, filename,colorbar)
 {
   localenv = environment() 
   
